@@ -16,3 +16,11 @@ a {
   box-sizing: border-box;
 }
 
+.wrapper {
+  width: 100vw;
+  min-width: 100vw;
+  min-height: 100vh;
+  background: #fffbe9;
+  padding: 2rem;
+  display: block;
+}

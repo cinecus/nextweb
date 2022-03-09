@@ -7,7 +7,8 @@ export let drinks = [
             hot: 50,
             ice: 60,
             frappe: 70
-        }
+        },
+        is_delete: false
     },
     {
         id: 2,
@@ -17,7 +18,8 @@ export let drinks = [
             hot: 40,
             ice: 50,
             frappe: 60
-        }
+        },
+        is_delete: false
     },
     {
         id: 3,
@@ -27,7 +29,8 @@ export let drinks = [
             hot: 45,
             ice: 55,
             frappe: 65
-        }
+        },
+        is_delete: false
     },
     {
         id: 4,
@@ -37,6 +40,7 @@ export let drinks = [
             hot: 50,
             ice: 60,
             frappe: 70
-        }
+        },
+        is_delete: false
     },
 ]

@@ -10,65 +10,26 @@ import { Switch } from 'antd'
 const fetcher = (url) => fetch(url).then((res) => res.json())
 
 export default function Home() {
-  const { data, error } = useSwr('/api/drinks', fetcher, { refreshInterval: 1000 })
-  const [toggleDeleteMode, setToggleDeleteMode] = useState(true)
-  const [isModalVisible, setIsModalVisible] = useState({ insert: false, edit: false });
-  const [editId, setEditId] = useState(0)
-  const showModal = (type) => {
-    setIsModalVisible({ ...isModalVisible, [type]: true });
-  };
+  const router = useRouter()
 
-  const handleOk = (type) => {
-    setIsModalVisible({ ...isModalVisible, [type]: false });
-  };
-
-  const handleCancel = (type) => {
-    setIsModalVisible({ ...isModalVisible, [type]: false });
-  };
-
-  const handleEdit = (id) => {
-    setEditId(+id)
-    showModal('edit')
-
-  }
-
-  if (error) return <div>Failed to load drinks</div>
-  if (!data) return <div>Loading ...</div>
   return (
-    <div className={styles.wrapper}>
-      <div className={styles.title}>
-        CRUD NEXT JS
+    <div className={'wrapper'}>
+      <div className={styles.hero}>
+        <div className={styles.container}>
+          <img src='https://media2.giphy.com/media/ohFe5JEvS5FbSdhh7k/giphy.gif'></img>
+        </div>
+        <div className={styles.container}>
+          <div className={styles.title}>
+            CC COFFEE
+          </div>
+          <div className={styles.subtitle}>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex numquam blanditiis molestiae eveniet, ea reprehenderit excepturi illo, ipsum quisquam, quidem dicta ipsam? Temporibus culpa doloremque nam omnis, architecto dolore corporis!
+          </div>
+          <button className={styles.btn} onClick={() => router.push('/drinks')}>See Menu</button>
+        </div>
       </div>
-      <button className={styles.btn} onClick={() => showModal('insert')}>ADD</button>
-      <Switch defaultChecked={toggleDeleteMode} />
-      <div className={styles.grid_container}>
-        {
-          data.map(_ => {
-            return <div className={styles.card}>
-              <div className={styles.tag}>
-                {_.id}
-              </div>
-              <div className={styles.edit_tag} onClick={() => handleEdit(_.id)}>
-                EDIT
-              </div>
-              {
-                toggleDeleteMode && <div className={styles.delete_btn}>
-                  x
-                </div>
-              }
-              <div className={styles.bg}>
-                <img src={_.url} />
-              </div>
-              <div className={styles.title}>
-                #{_.id} {_.name}
-              </div>
-            </div>
-          })
-        }
-      </div>
-      <ModalInsert prop={{ isModalVisible, handleCancel, handleOk }} />
-      <ModalEdit prop={{ isModalVisible, handleCancel, handleOk, editId }} />
-      {/* <ModalInsert isModalVisible={isModalVisible} handleOk={handleOk} handleCancel={handleCancel} /> */}
     </div>
   )
 }
+
+

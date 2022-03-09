@@ -10,9 +10,10 @@ export default function handler(req, res) {
         const { name, url } = req.body
         let find_drink = drinks.find(el => el.id == drinkId)
         drinks[drinkId - 1] = {
+            ...drinks[drinkId - 1],
             id: drinkId,
             name,
-            url
+            url,
         }
         console.log('drinks', drinks)
         console.log('find_drink', find_drink)
@@ -21,7 +22,11 @@ export default function handler(req, res) {
         // drinks = [...drinks].filter(el => el.id !== drinkId)
         console.log('first', drinkId)
         // drinks = drinks.filter(el => el.id !== +drinkId)
-        console.log('drinks', drinks.filter(el => el.id !== +drinkId))
+        drinks[drinkId - 1] = {
+            ...drinks[drinkId - 1],
+            is_delete: true
+        }
+
         // drinks = temp_drinks
         res.status(200).json({ msg: 'DELETE ITEM SUCCESSFULLY' })
     }

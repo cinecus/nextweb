@@ -3,7 +3,7 @@ import { useRouter } from 'next/router'
 import useSwr, { useSWRConfig } from 'swr'
 import Head from 'next/head'
 import Image from 'next/image'
-import styles from '../../styles/Home.module.css'
+import styles from '../../styles/Drinks.module.css'
 import { ModalInsert, ModalEdit, ModalSuccess } from '../../components/Modal'
 import { Switch } from 'antd'
 
@@ -13,8 +13,10 @@ const fetcher_delete = (url) => fetch(url, {
 }).then((res) => res.json())
 
 export default function Home() {
+  const router = useRouter()
   const { data, error } = useSwr('/api/drinks', fetcher, { refreshInterval: 3000 })
   const [toggleDeleteMode, setToggleDeleteMode] = useState(false)
+  const [toggleEditMode, setToggleEditMode] = useState(false)
   const [isModalVisible, setIsModalVisible] = useState({ insert: false, edit: false });
   const [editId, setEditId] = useState(0)
   const showModal = (type) => {
@@ -45,24 +47,31 @@ export default function Home() {
   if (error) return <div>Failed to load drinks</div>
   if (!data) return <div>Loading ...</div>
   return (
-    <div className={styles.wrapper}>
+    <div className='wrapper'>
       <div className={styles.title}>
-        CRUD NEXT JS
+        COFFEE MENU
       </div>
       <div className={styles.action_container}>
-        <button className={styles.btn} onClick={() => showModal('insert')}>ADD</button>
-        <button className={toggleDeleteMode ? styles.delete_btn_active : styles.delete_btn} onClick={() => setToggleDeleteMode(!toggleDeleteMode)}>DELETE</button>
+        <div className={styles.back_btn} onClick={() => router.push('/')}> {'<<'} Back</div>
+        <div>
+          <button className={styles.btn} onClick={() => showModal('insert')}>ADD</button>
+          <button className={toggleEditMode ? styles.edit_btn_active : styles.edit_btn} onClick={() => setToggleEditMode(!toggleEditMode)}>EDIT</button>
+          <button className={toggleDeleteMode ? styles.delete_btn_active : styles.delete_btn} onClick={() => setToggleDeleteMode(!toggleDeleteMode)}>DELETE</button>
+        </div>
       </div>
       <div className={styles.grid_container}>
         {
-          data.map(_ => {
+          data.filter(item => !item.is_delete).map(_ => {
             return <div className={styles.card}>
               <div className={styles.tag}>
-                {_.id}
+                #{_.id}
               </div>
-              <div className={styles.edit_tag} onClick={() => handleEdit(_.id)}>
-                EDIT
-              </div>
+              {
+                toggleEditMode && <div className={styles.edit_tag} onClick={() => handleEdit(_.id)}>
+                  EDIT
+                </div>
+              }
+
               {
                 toggleDeleteMode && <div className={styles.delete_btn} onClick={() => handleDelete(_.id)}>
                   x
@@ -72,7 +81,7 @@ export default function Home() {
                 <img src={_.url} />
               </div>
               <div className={styles.title}>
-                #{_.id} {_.name}
+                {_.name}
               </div>
             </div>
           })
