@@ -21,8 +21,4 @@
     "react-slideshow-image": "^3.7.0",
     "swr": "^1.2.2"
   }
-  // "devDependencies": {
-  //   "eslint": "8.10.0",
-  //   "eslint-config-next": "12.1.0"
-  // }
 }
