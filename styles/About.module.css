@@ -1,0 +1,50 @@
+.hero {
+  width: 90vw;
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.container {
+  display: block;
+  margin: 3rem;
+}
+
+.title {
+  font-size: 2.5rem;
+  color: black;
+  font-weight: 500;
+}
+
+.subtitle {
+  font-size: 1.5rem;
+  color: black;
+  font-weight: 600;
+  text-align: start;
+  margin: 1rem 0px;
+}
+
+.content {
+  font-size: 1.2rem;
+  color: black;
+  margin-top: 1rem;
+  max-width: 60vw;
+}
+
+.btn {
+  color: white;
+  background: rgb(226, 151, 38);
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 5px;
+  margin-top: 1rem;
+  transition: 0.3s ease-in-out all;
+}
+
+.btn:hover {
+  opacity: 0.9;
+  transform: scale(1.05);
+}

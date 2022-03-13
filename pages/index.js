@@ -13,20 +13,18 @@ export default function Home() {
   const router = useRouter()
 
   return (
-    <div className={'wrapper'}>
-      <div className={styles.hero}>
-        <div className={styles.container}>
-          <img src='https://media2.giphy.com/media/ohFe5JEvS5FbSdhh7k/giphy.gif'></img>
+    <div className={styles.hero}>
+      <div className={styles.container}>
+        <img src='https://media2.giphy.com/media/ohFe5JEvS5FbSdhh7k/giphy.gif'></img>
+      </div>
+      <div className={styles.container}>
+        <div className={styles.title}>
+          NEXT COFFEE
         </div>
-        <div className={styles.container}>
-          <div className={styles.title}>
-            CC COFFEE
-          </div>
-          <div className={styles.subtitle}>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex numquam blanditiis molestiae eveniet, ea reprehenderit excepturi illo, ipsum quisquam, quidem dicta ipsam? Temporibus culpa doloremque nam omnis, architecto dolore corporis!
-          </div>
-          <button className={styles.btn} onClick={() => router.push('/drinks')}>See Menu</button>
+        <div className={styles.subtitle}>
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex numquam blanditiis molestiae eveniet, ea reprehenderit excepturi illo, ipsum quisquam, quidem dicta ipsam? Temporibus culpa doloremque nam omnis, architecto dolore corporis!
         </div>
+        <button className={styles.btn} onClick={() => router.push('/drinks')}>See Menu</button>
       </div>
     </div>
   )

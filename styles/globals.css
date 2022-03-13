@@ -23,4 +23,44 @@ a {
   background: #fffbe9;
   padding: 2rem;
   display: block;
+  overflow-x: hidden;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 30vw;
+  padding-right: 30vw;
+  font-size: 1.4rem;
+  color: #000;
+}
+
+.nav a {
+  text-decoration: none !important;
+  color: #000;
+}
+
+.nav > * {
+  cursor: pointer;
+}
+.nav > *:hover {
+  transform: translateX(3px);
+}
+
+.underline {
+  width: 100%;
+  max-width: 150px;
+  height: 4px;
+  border-radius: 50%;
+  background: goldenrod;
+  margin: 5px auto;
+}
+
+.container_center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 70vh;
 }
