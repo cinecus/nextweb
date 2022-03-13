@@ -35,11 +35,11 @@ const about = () => {
                 <div className={styles.subtitle}>
                     Source Code
                 </div>
-                <a href='https://github.com/cinecus/nextweb' target='_blank'>https://github.com/cinecus/nextweb</a>
+                <a href='https://github.com/cinecus/nextweb' target='_blank' rel="noreferrer">https://github.com/cinecus/nextweb</a>
                 <div className={styles.subtitle}>
                     Other Projects
                 </div>
-                <a href='https://cinecus-project.et.r.appspot.com' target='_blank'>https://cinecus-project.et.r.appspot.com</a>
+                <a href='https://cinecus-project.et.r.appspot.com' target='_blank' rel="noreferrer">https://cinecus-project.et.r.appspot.com</a>
             </div>
         </div>
     )
